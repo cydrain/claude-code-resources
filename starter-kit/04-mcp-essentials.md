@@ -179,6 +179,15 @@ claude mcp add playwright -- npx -y @playwright/mcp
 
 **前置條件：** 需要 Google Cloud Project + OAuth 設定（較複雜，約 10-15 分鐘）
 
+> [!IMPORTANT] **開始前必讀（避免被 Google 停權）**
+>
+> 這段是 OAuth 流程，Google 對「未驗證的 OAuth app」有兩條雷區，新手最容易踩：
+>
+> 1. **不要用「全新、從沒用過 GCP 的 Google 帳號」做這個設定。** 建議挑一個**平常有在用 Google 服務、有正常活動紀錄**的帳號（最好是 Workspace 公司信箱、或自己長年使用的 @gmail.com）。新帳號 + 第一次碰 GCP + OAuth 失敗重試 = 容易被 Google 反詐欺系統判定為異常並停權專案。
+> 2. **第一次 `gws auth login` 失敗時，先停下來看錯誤訊息，不要連續重試。** 連續多次失敗的 OAuth 嘗試是異常訊號之一。多半是「沒把自己加進 Test users」或「scope 勾太多」造成的，先排查再重跑。
+>
+> 真實案例：[已有學員回報](https://github.com/Raymondhou0917/claude-code-resources/issues/4)用第一次接觸 GCP 的帳號跑完 OAuth 後，整個 Cloud 專案被判停權、申訴被拒，30 天才能刪除重建。
+
 #### Step 1：安裝 gws CLI
 
 ```bash
@@ -189,19 +198,56 @@ brew install googleworkspace-cli
 npm install -g @googleworkspace/cli
 ```
 
-#### Step 2：建立 Google Cloud Project（需用戶手動操作）
+#### Step 2：建立 Google Cloud Project + OAuth Client（手動操作）
 
-1. 到 https://console.cloud.google.com/ → 建立新專案
-2. 啟用以下 API：Gmail API、Google Calendar API、Google Drive API
-3. 建立 OAuth 2.0 Client ID（應用類型選「Desktop App」）
-4. 下載 JSON 憑證檔
+1. **建專案**：到 https://console.cloud.google.com/ → 建立新專案（或挑一個你已經在用的舊專案，更安全）
+2. **啟用 API**：Gmail API、Google Calendar API、Google Drive API、Google Sheets API、Google Docs API（用到哪個啟哪個，一次全開也可以）
+3. **設定 OAuth consent screen**（左側選單 → APIs & Services → OAuth consent screen）：
+   - User Type 選 **External**（testing 模式即可，不需要送審）
+   - **⚠️ 一定要在「Test users」加入你自己的 Google 帳號 email**
+     沒加這步驟，等下登入會直接看到 "Access blocked" 卡死
+4. **建 OAuth 2.0 Client ID**（APIs & Services → Credentials → Create credentials → OAuth client ID）：
+   - 類型選 **Desktop app**
+5. **下載 JSON 憑證檔** → 改名為 `client_secret.json`，放到：
+   ```bash
+   mkdir -p ~/.config/gws
+   mv ~/Downloads/client_secret_*.json ~/.config/gws/client_secret.json
+   ```
 
-#### Step 3：設定認證
+#### Step 3：登入 + 限縮 scope（很重要）
+
+> [!WARNING] **Scope 不要勾「全部」、不要用 recommended preset**
+>
+> Google 對「未驗證 OAuth app（也就是上面 testing 模式建的）」每次同意最多 ~25 個 scope。預設的 `recommended` preset 包含 85+ scope，**一定會失敗**，特別是 @gmail.com 帳號。
+>
+> 解法：用 `-s` 參數指定你真的會用到的服務即可。
+
+依照你的需求挑 service：
 
 ```bash
-# 用互動式設定（會開瀏覽器登入）
-gws auth setup --client-id YOUR_CLIENT_ID --client-secret YOUR_CLIENT_SECRET
+# 最常見組合（信箱 + 行事曆 + 雲端硬碟 + 試算表）
+gws auth login -s gmail,calendar,drive,sheets
+
+# 如果還會用 Docs / Slides
+gws auth login -s gmail,calendar,drive,sheets,docs,slides
 ```
+
+跑下去會自動開瀏覽器，依序：
+
+1. 選你剛剛加進 Test users 的那個 Google 帳號
+2. 看到「Google hasn't verified this app」警告 → 點 **Continue**（這是 testing 模式正常現象）
+3. 勾選同意的 scope（或 Select all） → Continue
+4. 看到 "Authentication successful" 就可以關瀏覽器
+
+驗證：
+
+```bash
+gws auth status        # 看到 auth_method: oauth2、scope_count 大於 0 即成功
+gws drive files list --params '{"pageSize":3}'   # 能列出檔案就 OK
+```
+
+> 💡 為什麼不直接 `gws auth setup`？
+> 官方的 `gws auth setup` 會自動建專案 + 建 OAuth client，但**前提是你本機已裝 `gcloud` CLI**。沒裝 gcloud 就走 Step 2-3 的 manual flow（不會經過 `auth setup`）。
 
 #### Step 4：安裝 Claude Code Skills
 
@@ -209,7 +255,7 @@ gws auth setup --client-id YOUR_CLIENT_ID --client-secret YOUR_CLIENT_SECRET
 npx skills add https://github.com/googleworkspace/cli
 ```
 
-**驗證：** 重啟 Claude Code，說「幫我看今天的行事曆」。
+**最終驗證：** 重啟 Claude Code，說「幫我看今天的行事曆」。
 
 > ⚠️ 注意：gws-cli 目前是 pre-v1.0（2026 年 3 月推出），更新頻繁，可能偶爾遇到 breaking changes。
 > 如果只需要 Gmail + Calendar，也可以考慮用獨立的 Gmail MCP + Calendar MCP，設定更簡單。
