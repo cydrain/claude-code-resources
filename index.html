@@ -2017,6 +2017,8 @@
     });
 
     // Kit (ConvertKit) 訂閱 — form ID: 9138207
+    // 加 host/referrer/search 三個欄位讓 Kit Attribution 正確歸因（從 ck.5.js 還原），
+    // search 內注入 UTM 讓 Attribution → UTM Source 看到 cc-resources 來源
     function kitSubscribe(e, form) {
       e.preventDefault();
       var input = form.querySelector('input[name="email_address"]');
@@ -2025,10 +2027,26 @@
       btn.textContent = '送出中...';
       btn.disabled = true;
 
+      var utm = new URLSearchParams({
+        utm_source: 'cc-resources',
+        utm_medium: 'footer',
+        utm_campaign: 'newsletter'
+      });
+      // 當前 URL 已帶 UTM 就保留（讓投放活動覆蓋）
+      new URLSearchParams(window.location.search).forEach(function (v, k) {
+        if (k.indexOf('utm_') === 0) utm.set(k, v);
+      });
+      var body = new URLSearchParams({
+        email_address: input.value,
+        referrer: document.referrer || '',
+        host: window.location.href,
+        search: '?' + utm.toString()
+      });
+
       fetch('https://app.kit.com/forms/9138207/subscriptions', {
         method: 'POST',
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: 'email_address=' + encodeURIComponent(input.value),
+        body: body.toString(),
         mode: 'no-cors'
       }).then(function () {
         btn.textContent = '訂閱成功 ✓';
