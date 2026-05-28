@@ -2309,6 +2309,27 @@ a.path-item .path-num {
 .waitlist-hero:hover {
   box-shadow: 0 20px 44px rgba(26, 26, 26, 0.14), 0 6px 14px rgba(26, 26, 26, 0.08);
 }
+.waitlist-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 4rem;
+  max-width: 1040px;
+  margin: 2.25rem auto 0;
+}
+.waitlist-col {
+  flex: 1 1 380px;
+  max-width: 440px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.waitlist-col .waitlist-hero {
+  width: 100%;
+  max-width: 100%;
+  margin: 0 0 1.5rem;
+}
 .waitlist-countdown {
   display: flex;
   align-items: baseline;
@@ -2373,6 +2394,29 @@ a.path-item .path-num {
   background: var(--orange-hover);
   color: #fff !important;
   animation-play-state: paused;
+}
+.waitlist-cta--live {
+  background: var(--dark);
+  animation-name: waitlist-breathe-dark;
+}
+.waitlist-cta--live:hover {
+  background: #000;
+}
+@keyframes waitlist-breathe-dark {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 4px 16px rgba(26, 26, 26, 0.28);
+  }
+  50% {
+    transform: scale(1.035);
+    box-shadow: 0 8px 28px rgba(26, 26, 26, 0.45);
+  }
+}
+.waitlist-note {
+  margin: 0.75rem 0 0;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  font-weight: 500;
 }
 @media (prefers-reduced-motion: reduce) {
   .waitlist-cta { animation: none; }
