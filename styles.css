@@ -528,10 +528,13 @@ h3 { font-size: 1.15rem; font-weight: 700; }
 
 @media (max-width: 600px) {
   .hero h1 {
-    font-size: 1.9rem;
+    font-size: 1.6rem;
   }
   .hero h1 .hero-h1-line {
     white-space: normal;
+  }
+  .hero h1 .highlight {
+    display: inline;
   }
   .hero h1 .h1-logo {
     width: 1.15em;
@@ -541,6 +544,8 @@ h3 { font-size: 1.15rem; font-weight: 700; }
   .hero h1 .hero-h1-mobile-br {
     display: inline;
   }
+  /* 手機版 hero 沉切量縮小，避免白色蓋太多 */
+  .why { margin-top: -70px; padding-top: calc(5rem + 70px); }
 }
 
 .hero h1 .t-cursor {
@@ -683,10 +688,11 @@ h3 { font-size: 1.15rem; font-weight: 700; }
 
 @media (max-width: 860px) {
   .hero { overflow: hidden; }
-  .hero-showcase { max-width: 100%; }
-  .hero-shot { width: 78vw; max-width: 420px; }
+  .hero-showcase { max-width: 100%; overflow: hidden; }
+  .hero-shots { max-width: 100%; }
+  .hero-shot { width: 52vw; max-width: 300px; }
   .hero-shot--left { transform: rotate(-4deg) translateY(12px); }
-  .hero-shot--right { margin-left: -42vw; transform: rotate(3deg) translateY(-12px); }
+  .hero-shot--right { margin-left: -16vw; transform: rotate(3deg) translateY(-12px); }
 }
 
 .terminal-bar {
