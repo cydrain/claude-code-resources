@@ -169,34 +169,16 @@
             </div>
           </div>
 
-          <div class="hero-terminal" style="position:relative;">
-            <div class="hand-note hand-note--d1" style="bottom:-40px; left:20px;">
-              <svg viewBox="0 0 32 32">
-                <path d="M22 22c-2 2-6 3-9 1s-4-6-2-9c2-4 5-3 5 0s-4 5-7 4" />
-                <path d="M9 17l-2 3 3 1" />
-              </svg>
-              <span>Interactive demo</span>
-            </div>
-            <div class="terminal-bar">
-              <div class="terminal-dot terminal-dot--red"></div>
-              <div class="terminal-dot terminal-dot--yellow"></div>
-              <div class="terminal-dot terminal-dot--green"></div>
-              <div class="terminal-title">raymondhouch.com</div>
-            </div>
-            <div class="terminal-body">
-
-              <div style="display:flex; gap:10px; margin:12px 0 14px;">
-                <span style="border:1px solid rgba(255,255,255,0.2); border-radius:4px; padding:4px 14px; display:inline-flex; align-items:center; gap:6px;"><span class="t-success">✓</span> <span class="t-cmd">Claude Code</span></span>
-                <span style="border:1px solid rgba(255,255,255,0.2); border-radius:4px; padding:4px 14px; display:inline-flex; align-items:center; gap:6px;"><span class="t-success">✓</span> <span class="t-cmd">Codex</span></span>
-              </div>
-              <div><span class="t-prompt">&gt;</span> <span class="t-cmd">幫我建一個自動化日記系統</span></div>
-              <br>
-              <div><span class="t-comment"># 載入 /journal skill...</span></div>
-              <div><span class="t-success">✓</span> <span class="t-dim">已建立 journals/2026-03-28.md</span></div>
-              <div><span class="t-success">✓</span> <span class="t-dim">已設定 Time Log 格式</span></div>
-              <div><span class="t-success">✓</span> <span class="t-dim">完成！你的日記系統已就緒</span></div>
-              <br>
-              <div><span class="t-prompt">&gt;</span> <span class="t-cursor"></span></div>
+          <div class="hero-showcase" style="position:relative;">
+            <div class="hero-shots">
+              <figure class="hero-shot hero-shot--left">
+                <span class="hero-shot-badge hero-shot-badge--claude"><img src="https://unpkg.com/@lobehub/icons-static-svg@latest/icons/claude.svg" alt="Claude Code"></span>
+                <img src="images/cc-desktop.webp" alt="Claude Code 桌面版實際操作畫面" loading="lazy" width="2732" height="1536">
+              </figure>
+              <figure class="hero-shot hero-shot--right">
+                <span class="hero-shot-badge hero-shot-badge--codex"><img src="https://unpkg.com/@lobehub/icons-static-svg@latest/icons/codex-color.svg" alt="Codex"></span>
+                <img src="images/codex-desktop.webp" alt="Codex 桌面版實際操作畫面" loading="lazy" width="2732" height="1536">
+              </figure>
             </div>
           </div>
         </div>
@@ -547,6 +529,124 @@
     </div>
   </section>
 
+  <!-- ===== Claude Code vs Codex 比較 ===== -->
+  <section class="vs" id="compare">
+    <div class="container--wide">
+      <div class="vs-header">
+        <h2><span class="vs-cc">Claude Code</span> <span class="vs-slash">/</span> <span class="vs-cx">Codex</span> 怎麼選？</h2>
+        <p class="section-desc">給 AI Agent 入門學員的快速比較</p>
+      </div>
+
+      <div class="vs-table">
+        <!-- header -->
+        <div class="vs-cell vs-cell--corner"></div>
+        <div class="vs-cell vs-col-cc vs-head">
+          <span class="vs-logo vs-logo--claude"><img src="https://unpkg.com/@lobehub/icons-static-svg@latest/icons/claude.svg" alt="Claude Code"></span>
+          <span class="vs-brand">Claude Code</span>
+        </div>
+        <div class="vs-cell vs-col-cx vs-head">
+          <span class="vs-logo vs-logo--codex"><img src="https://unpkg.com/@lobehub/icons-static-svg@latest/icons/codex-color.svg" alt="Codex"></span>
+          <span class="vs-brand">Codex</span>
+        </div>
+
+        <!-- 模型 -->
+        <div class="vs-cell vs-cell--label"><span class="vs-check"><svg viewBox="0 0 20 20"><path d="M16.7 4.15a.75.75 0 01.14 1.05l-8 10.5a.75.75 0 01-1.13.08l-4.5-4.5a.75.75 0 011.06-1.06l3.9 3.9 7.48-9.82a.75.75 0 011.05-.15z"/></svg></span>模型</div>
+        <div class="vs-cell vs-col-cc">默認 Claude（可替換）</div>
+        <div class="vs-cell vs-col-cx">只能 GPT 系列</div>
+
+        <!-- 易用度 -->
+        <div class="vs-cell vs-cell--label"><span class="vs-check"><svg viewBox="0 0 20 20"><path d="M16.7 4.15a.75.75 0 01.14 1.05l-8 10.5a.75.75 0 01-1.13.08l-4.5-4.5a.75.75 0 011.06-1.06l3.9 3.9 7.48-9.82a.75.75 0 011.05-.15z"/></svg></span>易用度</div>
+        <div class="vs-cell vs-col-cc">桌面版目前僅英文介面</div>
+        <div class="vs-cell vs-col-cx">可調整不同語系，包括中文</div>
+
+        <!-- 特色功能 -->
+        <div class="vs-cell vs-cell--label"><span class="vs-check"><svg viewBox="0 0 20 20"><path d="M16.7 4.15a.75.75 0 01.14 1.05l-8 10.5a.75.75 0 01-1.13.08l-4.5-4.5a.75.75 0 011.06-1.06l3.9 3.9 7.48-9.82a.75.75 0 011.05-.15z"/></svg></span>特色功能</div>
+        <div class="vs-cell vs-col-cc">自由度高</div>
+        <div class="vs-cell vs-col-cx">生圖、手機遠端、電腦控制</div>
+
+        <!-- 價格 -->
+        <div class="vs-cell vs-cell--label"><span class="vs-check"><svg viewBox="0 0 20 20"><path d="M16.7 4.15a.75.75 0 01.14 1.05l-8 10.5a.75.75 0 01-1.13.08l-4.5-4.5a.75.75 0 011.06-1.06l3.9 3.9 7.48-9.82a.75.75 0 011.05-.15z"/></svg></span>價格<span class="vs-tip" tabindex="0" role="note" aria-label="價格比較說明"><svg viewBox="0 0 20 20"><path fill-rule="evenodd" d="M18 10A8 8 0 112 10a8 8 0 0116 0zM9 6a1 1 0 112 0 1 1 0 01-2 0zm.25 2.75a.75.75 0 011.5 0V14a.75.75 0 01-1.5 0V8.75z" clip-rule="evenodd"/></svg><span class="vs-tip-bubble">兩者皆以同樣 20 USD／月 的方案比較額度高低。</span></span></div>
+        <div class="vs-cell vs-col-cc">額度較小</div>
+        <div class="vs-cell vs-col-cx">額度大方（20 USD）</div>
+
+        <!-- 桌面版差異 1：多視窗 -->
+        <div class="vs-cell vs-cell--label"><span class="vs-check"><svg viewBox="0 0 20 20"><path d="M16.7 4.15a.75.75 0 01.14 1.05l-8 10.5a.75.75 0 01-1.13.08l-4.5-4.5a.75.75 0 011.06-1.06l3.9 3.9 7.48-9.82a.75.75 0 011.05-.15z"/></svg></span>桌面版視窗</div>
+        <div class="vs-cell vs-col-cc">可多視窗／分割畫面，同時開多個工作</div>
+        <div class="vs-cell vs-col-cx">單一主視窗為主</div>
+      </div>
+
+      <details class="vs-qa">
+        <summary class="vs-qa-q">
+          <span class="vs-qa-text"><span class="fc-gpt-t">ChatGPT</span> <span class="fc-vs">vs</span> <span class="fc-cx-t">Codex</span>：檔案能力差在哪？</span>
+          <span class="vs-qa-chevron"><svg viewBox="0 0 20 20"><path d="M5.5 7.5l4.5 4.5 4.5-4.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        </summary>
+        <div class="vs-qa-a">
+          <p class="fc-subdesc">一個要你餵資料，一個能從專案資料夾出發</p>
+
+          <div class="fc-grid">
+        <!-- ChatGPT -->
+        <div class="fc-card fc-card--gpt">
+          <div class="fc-card-head">
+            <span class="fc-logo"><img src="https://unpkg.com/@lobehub/icons-static-svg@latest/icons/openai.svg" alt="ChatGPT"></span>
+            <span class="fc-brand">ChatGPT</span>
+          </div>
+          <div class="fc-sub">要讓它看到本地文件：</div>
+          <ul class="fc-list">
+            <li><span class="fc-ck"><svg viewBox="0 0 20 20"><path d="M16.7 4.15a.75.75 0 01.14 1.05l-8 10.5a.75.75 0 01-1.13.08l-4.5-4.5a.75.75 0 011.06-1.06l3.9 3.9 7.48-9.82a.75.75 0 011.05-.15z"/></svg></span><span><strong>人工</strong>複製貼上內容</span></li>
+            <li><span class="fc-ck"><svg viewBox="0 0 20 20"><path d="M16.7 4.15a.75.75 0 01.14 1.05l-8 10.5a.75.75 0 01-1.13.08l-4.5-4.5a.75.75 0 011.06-1.06l3.9 3.9 7.48-9.82a.75.75 0 011.05-.15z"/></svg></span><span>用它可以讀的<strong>格式上傳</strong></span></li>
+          </ul>
+          <div class="fc-chips">
+            <span class="fc-chip">複製貼上</span>
+            <span class="fc-chip">上傳格式</span>
+          </div>
+          <div class="fc-note">
+            <svg viewBox="0 0 20 20"><path d="M10 10a4 4 0 100-8 4 4 0 000 8zm0 2c-3.3 0-6 1.8-6 4v1h12v-1c0-2.2-2.7-4-6-4z"/></svg>
+            <span>需要你一步步餵資料給它</span>
+          </div>
+        </div>
+
+        <!-- Codex -->
+        <div class="fc-card fc-card--cx">
+          <div class="fc-card-head">
+            <span class="fc-logo"><img src="https://unpkg.com/@lobehub/icons-static-svg@latest/icons/codex-color.svg" alt="Codex"></span>
+            <span class="fc-brand">Codex</span>
+          </div>
+          <ul class="fc-list">
+            <li><span class="fc-ck"><svg viewBox="0 0 20 20"><path d="M16.7 4.15a.75.75 0 01.14 1.05l-8 10.5a.75.75 0 01-1.13.08l-4.5-4.5a.75.75 0 011.06-1.06l3.9 3.9 7.48-9.82a.75.75 0 011.05-.15z"/></svg></span><span>從<strong>專案資料夾</strong>出發</span></li>
+            <li><span class="fc-ck"><svg viewBox="0 0 20 20"><path d="M16.7 4.15a.75.75 0 01.14 1.05l-8 10.5a.75.75 0 01-1.13.08l-4.5-4.5a.75.75 0 011.06-1.06l3.9 3.9 7.48-9.82a.75.75 0 011.05-.15z"/></svg></span><span>自行找本地檔案，<strong>不限數量</strong></span></li>
+            <li><span class="fc-ck"><svg viewBox="0 0 20 20"><path d="M16.7 4.15a.75.75 0 01.14 1.05l-8 10.5a.75.75 0 01-1.13.08l-4.5-4.5a.75.75 0 011.06-1.06l3.9 3.9 7.48-9.82a.75.75 0 011.05-.15z"/></svg></span><span>整理資料夾：截圖、照片、影片</span></li>
+          </ul>
+          <div class="fc-chips">
+            <span class="fc-chip">專案資料夾</span>
+            <span class="fc-chip">不限數量</span>
+            <span class="fc-chip">分類整理</span>
+          </div>
+          <div class="fc-note">
+            <svg viewBox="0 0 20 20"><path d="M7 2.5a1 1 0 112 0V4h2V2.5a1 1 0 112 0V4a3 3 0 013 3v6a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h1V2.5zM7.5 9a1 1 0 100 2 1 1 0 000-2zm5 0a1 1 0 100 2 1 1 0 000-2z"/></svg>
+            <span>從專案出發，自己找到所有相關檔案</span>
+          </div>
+        </div>
+      </div>
+
+          <div class="fc-footer">
+            <span class="fc-ck fc-ck--lg"><svg viewBox="0 0 20 20"><path d="M16.7 4.15a.75.75 0 01.14 1.05l-8 10.5a.75.75 0 01-1.13.08l-4.5-4.5a.75.75 0 011.06-1.06l3.9 3.9 7.48-9.82a.75.75 0 011.05-.15z"/></svg></span>
+            <span><strong class="fc-gpt-t">ChatGPT</strong> 適合單次問答；<strong class="fc-cx-t">Codex</strong> 更像能進入資料夾工作的 AI Agent。</span>
+          </div>
+
+          <div class="vs-qa vs-qa-static">
+            <div class="vs-qa-q vs-qa-q--static">
+              <span class="vs-qa-badge">學員提問</span>
+              <span class="vs-qa-text">聊天的話，我要用 Codex 還是 ChatGPT？</span>
+            </div>
+            <div class="vs-qa-a">
+              <p class="vs-qa-answer">純聊天、問答、寫文案，用 <strong>ChatGPT</strong> 就好——它本來就是為對話設計的。當你要它讀你的專案資料夾、改檔案、把一堆截圖照片整理完、動手把事情做完，才換成 <strong>Codex</strong>。兩個共用同一個 ChatGPT 訂閱，不用多付錢，看你當下是要「聊」還是要「做」。</p>
+            </div>
+          </div>
+        </div>
+      </details>
+    </div>
+  </section>
+
   <!-- ===== Resources ===== -->
   <section class="resources" id="resources" style="position:relative;">
     <div class="hand-note hand-note--d5" style="top:5.5rem; left:42rem;">
@@ -596,6 +696,23 @@
 
       <!-- 安裝設置 -->
       <div class="res-panel active" data-panel="setup">
+        <!-- 精選新影片：Codex 桌面版（點擊就地播放） -->
+        <div class="res-feature">
+          <div class="res-feature-head">
+            <span class="res-feature-badge">NEW</span>
+            <span class="res-feature-tag">最新影片</span>
+          </div>
+          <div class="res-feature-player" data-yt="d7qmp6gjpiU" onclick="playFeatureVideo(this)" role="button" tabindex="0">
+            <img class="res-feature-thumb" src="https://img.youtube.com/vi/d7qmp6gjpiU/maxresdefault.jpg" alt="Codex 桌面版應用教學" loading="lazy">
+            <span class="res-feature-play" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z" fill="currentColor"/></svg>
+            </span>
+          </div>
+          <div class="res-feature-caption">
+            <div class="res-feature-title">Codex 桌面版應用教學<br>Claude Code 不會白學，AI Agent 怎麼搬家？</div>
+          </div>
+        </div>
+
         <!-- 影片教學 -->
         <div class="res-bookmarks">
           <a href="https://www.youtube.com/watch?v=xo7dE80ktu4" class="res-bookmark" target="_blank">
@@ -984,6 +1101,34 @@
       <!-- 雷蒙教學文 -->
       <div class="res-panel" data-panel="blog">
         <div class="res-grid">
+          <a href="https://raymondhouch.com/lifehacker/digital-workflow/notion-n8n-ai-agent-comparison/"
+            class="res-card" target="_blank" data-track-cta="blog-notion-n8n">
+            <img class="res-card-thumb"
+              src="https://raymondhouch.com/wp-content/uploads/2026/04/658195679_27110805201841007_52322339380380545_n-1-1024x572.jpg"
+              alt="AI Agent、Notion、n8n 三者關係封面" loading="lazy">
+            <div class="res-card-body">
+              <div class="res-card-title">有了 AI Agent 之後，Notion 跟 n8n 就可以丟了嗎？</div>
+              <div class="res-card-desc">Claude Code 這麼強，之前學的 Notion、n8n 白學了嗎？三個工具其實互補增能。雷蒙分享公司三個都在用的實戰經驗，以及為什麼「工作流程理解力」才是核心</div>
+              <div class="res-card-meta">
+                <span class="res-badge res-badge--advanced">進階</span>
+                <span class="res-badge res-badge--zh">中文</span>
+              </div>
+            </div>
+          </a>
+          <a href="https://raymondhouch.com/lifehacker/digital-workflow/ai-agent-team/"
+            class="res-card" target="_blank" data-track-cta="blog-agent-team">
+            <img class="res-card-thumb"
+              src="https://raymondhouch.com/wp-content/uploads/2026/05/ai-agent-agent-team.webp"
+              alt="為什麼一般人不需要打造 AI Agent Team 封面" loading="lazy">
+            <div class="res-card-body">
+              <div class="res-card-title">為什麼一般人不需要刻意打造 AI Agent Team？</div>
+              <div class="res-card-desc">Claude Code 爆紅後，YouTube 流行教你打造整套 Agent Team。雷蒙玩了三個多月後不這樣建議——多 Agent 容易把「不會內耗的超人」退化成「會內耗的小公司」。談怎麼讓單一全能 AI 真正好用</div>
+              <div class="res-card-meta">
+                <span class="res-badge res-badge--basic">初階</span>
+                <span class="res-badge res-badge--zh">中文</span>
+              </div>
+            </div>
+          </a>
           <a href="https://raymondhouch.com/lifehacker/digital-workflow/claude-code-desktop-vs-terminal/"
             class="res-card" target="_blank" data-track-cta="blog-desktop-vs-terminal">
             <img class="res-card-thumb"
@@ -1191,6 +1336,18 @@
             </div>
           </div>
         </div>
+
+        <!-- 學員回饋（搬到 4500+ 區塊上方） -->
+        <section class="testimonials" id="testimonials">
+          <div class="tm-header">
+            <div class="section-label">TESTIMONIALS</div>
+            <h2>真實學員回饋</h2>
+            <p class="section-desc">不少學員把 Claude Code 練熟後，無痛把同一套設定搬去 Codex，等於一次養出兩個 AI 助手。</p>
+          </div>
+          <iframe id="tmWall" class="tm-embed"
+            src="https://testimonials.lifehacker.tw/embed/wall?max=14&amp;columns=3&amp;theme=light"
+            width="100%" height="600" frameborder="0" scrolling="no" loading="lazy" title="學員見證"></iframe>
+        </section>
 
         <!-- Waitlist -->
         <div id="waitlist" style="text-align:center; padding:2rem 0 0;">
@@ -1716,8 +1873,8 @@
       if (topBtn) topBtn.classList.toggle('visible', window.scrollY > 400);
     }, { passive: true });
 
-    // Terminal parallax — moves slower than scroll, creates depth (desktop only)
-    var terminal = document.querySelector('.hero-terminal');
+    // Hero showcase parallax — moves slower than scroll, creates depth (desktop only)
+    var terminal = document.querySelector('.hero-showcase');
     if (terminal && window.innerWidth > 860) {
       terminal.style.transition = 'none';
       window.addEventListener('scroll', function () {
@@ -1748,6 +1905,30 @@
         document.querySelectorAll('.sk-item').forEach(i => i.classList.remove('open'));
         if (!wasOpen) item.classList.add('open');
       });
+    });
+
+    // 精選影片：點擊就地嵌入 YouTube 播放
+    function playFeatureVideo(el) {
+      if (el.classList.contains('playing')) return;
+      var id = el.dataset.yt;
+      if (!id) return;
+      el.classList.add('playing');
+      var iframe = document.createElement('iframe');
+      iframe.className = 'res-feature-iframe';
+      iframe.src = 'https://www.youtube.com/embed/' + id + '?autoplay=1&rel=0&modestbranding=1';
+      iframe.title = 'Codex 桌面版應用教學';
+      iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
+      iframe.allowFullscreen = true;
+      el.innerHTML = '';
+      el.appendChild(iframe);
+    }
+
+    // 學員見證 embed 自動高度（接收 testimonials 牆的 sp-resize 訊息）
+    window.addEventListener('message', function (e) {
+      if (!e.data || e.data.type !== 'sp-resize') return;
+      var h = parseInt(e.data.height, 10);
+      var f = document.getElementById('tmWall');
+      if (f && h > 0) f.style.height = h + 'px';
     });
 
     // 複製 Starter Kit RAW 連結
