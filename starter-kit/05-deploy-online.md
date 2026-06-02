@@ -75,6 +75,8 @@
 
 **安裝指令：**
 
+> ⚠️ 以下指令請在**普通終端機（zsh / bash）**執行，不是貼到 Claude Code 的對話輸入框。貼到對話框裡 Claude 會把它當成聊天內容，回你「這不是有效的指令」。
+
 ```bash
 claude plugin marketplace add zeabur/agent-skills && claude plugin install zeabur@zeabur
 ```
@@ -100,6 +102,8 @@ claude plugin marketplace add zeabur/agent-skills && claude plugin install zeabu
 **適合：** 純前端靜態網頁、Landing Page、個人網站、想要免費方案的人
 
 **前置條件：** 需要 Cloudflare 帳號（免費）+ Wrangler CLI
+
+> ⚠️ 以下指令（含 `wrangler login`）一樣請在**普通終端機（zsh / bash）**執行，不要貼到 Claude Code 的對話輸入框。
 
 ```bash
 # 安裝 Wrangler CLI
