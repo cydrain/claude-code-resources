@@ -3252,10 +3252,7 @@ div.course-lesson,
     z-index: 1;
   }
   @media (max-width: 600px) {
-    #countdownBar { font-size: 0.75rem; gap: 0.6rem; padding: 8px 8px 8px 16px; }
-    #countdownBar .cd-label { display: none; }
-    #countdownBar .cd-num { font-size: 0.85rem; }
-    #countdownBar .cd-cta { padding: 8px 16px; font-size: 0.75rem; }
+    #countdownBar { display: none; }
   }
   #topBtn {
     position: fixed;
