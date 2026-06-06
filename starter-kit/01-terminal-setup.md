@@ -88,16 +88,18 @@ grep '"tui"' ~/.claude/settings.json
 
 ### 建立 `cc` alias（macOS / Linux）
 
+> Fullscreen 已經在上一步寫進 `settings.json`，alias 不用再塞 `CLAUDE_CODE_NO_FLICKER=1`（那是舊版作法）。
+
 **方案 A：綁定專案目錄**（請替換 `你的專案路徑`）：
 
 ```bash
-echo "alias cc='cd ~/你的專案路徑 && CLAUDE_CODE_NO_FLICKER=1 claude'" >> ~/.zshrc && source ~/.zshrc
+echo "alias cc='cd ~/你的專案路徑 && claude'" >> ~/.zshrc && source ~/.zshrc
 ```
 
 **方案 B：不綁目錄，純快速啟動**：
 
 ```bash
-echo "alias cc='CLAUDE_CODE_NO_FLICKER=1 claude'" >> ~/.zshrc && source ~/.zshrc
+echo "alias cc='claude'" >> ~/.zshrc && source ~/.zshrc
 ```
 
 ---
@@ -145,16 +147,18 @@ if (!(Test-Path $PROFILE)) { New-Item -ItemType File -Path $PROFILE -Force }
 
 **步驟 4：加入 cc function**
 
+> Fullscreen 已經寫進 `settings.json`（前面「啟用 Fullscreen 模式」那一步），function 裡不用再設 `CLAUDE_CODE_NO_FLICKER` 環境變數（那是舊版作法）。
+
 方案 A：綁定專案目錄（替換 `C:\你的專案路徑`）：
 
 ```powershell
-Add-Content $PROFILE "`nfunction cc { Set-Location 'C:\你的專案路徑'; `$env:CLAUDE_CODE_NO_FLICKER = '1'; claude @args }"
+Add-Content $PROFILE "`nfunction cc { Set-Location 'C:\你的專案路徑'; claude @args }"
 ```
 
 方案 B：不綁目錄，純快速啟動：
 
 ```powershell
-Add-Content $PROFILE "`nfunction cc { `$env:CLAUDE_CODE_NO_FLICKER = '1'; claude @args }"
+Add-Content $PROFILE "`nfunction cc { claude @args }"
 ```
 
 **步驟 5：重新載入 Profile**
