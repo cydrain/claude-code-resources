@@ -64,6 +64,28 @@ echo $SHELL
 
 以下用 zsh 示範，bash 把 `.zshrc` 換成 `.bashrc`。
 
+### 啟用 Fullscreen 模式（最重要，2026-06 更新）
+
+從 Claude Code **2.1.110+** 起，Fullscreen 渲染（取代舊版 `CLAUDE_CODE_NO_FLICKER=1` 環境變數）正式化成 `settings.json` 的 `tui` 欄位。**寫到設定檔比 env var 穩**：不管你怎麼啟動（直接打 `claude`、`cc` alias、cmux App、桌面版、IDE 整合），都會吃到。
+
+```bash
+# 確認 settings.json 存在（不存在就先建空殼）
+[ -f ~/.claude/settings.json ] || echo '{}' > ~/.claude/settings.json
+
+# 用 jq 安全合併 tui: "fullscreen"（不破壞既有設定）
+jq '. + {"tui": "fullscreen"}' ~/.claude/settings.json > ~/.claude/settings.json.tmp \
+  && mv ~/.claude/settings.json.tmp ~/.claude/settings.json
+
+# 驗證
+grep '"tui"' ~/.claude/settings.json
+# 應顯示：  "tui": "fullscreen",
+```
+
+> [!WARNING]
+> **舊版 `CLAUDE_CODE_NO_FLICKER=1` 環境變數仍可運作，但只在「終端機 shell 直接啟動 claude」時生效。** GUI App（cmux、桌面版）走 macOS launch env，不載入你 `.zshrc` 的 alias 與 env var — 所以 env var 對 GUI 啟動完全沒用。新版正規解 = `settings.json`，一勞永逸。
+
+設定完**重啟 Claude Code** 才生效（不會影響已開的 session）。
+
 ### 建立 `cc` alias（macOS / Linux）
 
 **方案 A：綁定專案目錄**（請替換 `你的專案路徑`）：
@@ -168,9 +190,9 @@ cc
 # Claude Code 啟動，滾輪可回看、畫面不閃爍 = 成功
 ```
 
-### 技術說明：NO_FLICKER 模式（Fullscreen Rendering）
+### 技術說明：Fullscreen 模式（原 NO_FLICKER）
 
-`CLAUDE_CODE_NO_FLICKER=1` 啟用 Claude Code 的新渲染引擎（v2.1.89+），改用差分渲染（只更新變化的字元），不再整螢幕重繪。
+新版 Claude Code（**2.1.110+**）把 Fullscreen 渲染正式化成 `settings.json` 的 `"tui": "fullscreen"` 欄位，**取代舊版的 `CLAUDE_CODE_NO_FLICKER=1` 環境變數**。兩種方式做的事一樣（啟用差分渲染引擎，v2.1.89+），但 settings.json 的方式對 GUI App（cmux、桌面版）也生效，env var 只對終端機 shell 啟動的 process 生效。差分渲染只更新變化的字元，不再整螢幕重繪。
 
 完整差異對照：
 
